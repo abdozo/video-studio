@@ -1,0 +1,179 @@
+{
+  "direction": "rtl",
+  "duration": 10,
+  "camera": [
+    {
+      "at": 0,
+      "x": 2440,
+      "y": 620,
+      "zoom": 1.05
+    },
+    {
+      "at": 2.4,
+      "x": 2440,
+      "y": 620,
+      "zoom": 1.05
+    },
+    {
+      "at": 3.6,
+      "x": 1700,
+      "y": 620,
+      "zoom": 1.05
+    },
+    {
+      "at": 6,
+      "x": 1700,
+      "y": 620,
+      "zoom": 1.05
+    },
+    {
+      "at": 7,
+      "x": 2070,
+      "y": 620,
+      "zoom": 0.68
+    }
+  ],
+  "notes": [
+    {
+      "id": "idea",
+      "at": -0.4,
+      "x": 2440,
+      "y": 600,
+      "w": 660,
+      "h": 400,
+      "color": "#fbe36a",
+      "taped": true,
+      "lines": [
+        {
+          "text": "فكرة واحدة",
+          "y": -105,
+          "size": 78,
+          "at": -0.4
+        },
+        {
+          "text": "تبدأ من هنا",
+          "y": 90,
+          "at": 1,
+          "size": 55
+        }
+      ],
+      "doodles": [
+        {
+          "kind": "question",
+          "at": 0.5
+        }
+      ]
+    },
+    {
+      "id": "connection",
+      "at": 3.4,
+      "x": 1700,
+      "y": 600,
+      "w": 620,
+      "h": 400,
+      "color": "#86d0f2",
+      "kind": "index",
+      "rotation": -0.025,
+      "lines": [
+        {
+          "text": "خطوة واضحة",
+          "y": -105,
+          "size": 74,
+          "at": 3.4
+        },
+        {
+          "text": "ثم نربط الأفكار",
+          "y": 110,
+          "at": 4.5,
+          "size": 50
+        }
+      ],
+      "doodles": [
+        {
+          "kind": "book",
+          "at": 4
+        }
+      ],
+      "rings": [
+        {
+          "at": 7,
+          "x": 0,
+          "y": -105,
+          "rx": 240,
+          "ry": 60
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "kind": "yarn",
+      "at": 3,
+      "from": [
+        2440,
+        420
+      ],
+      "to": [
+        1700,
+        420
+      ],
+      "sag": -65,
+      "duration": 0.7
+    }
+  ],
+  "sfx": [
+    {
+      "at": 1,
+      "kind": "marker",
+      "duration": 0.25
+    },
+    {
+      "at": 3,
+      "kind": "yarn",
+      "duration": 0.7
+    },
+    {
+      "at": 3.51,
+      "kind": "slap"
+    },
+    {
+      "at": 3.54,
+      "kind": "pin"
+    },
+    {
+      "at": 4.5,
+      "kind": "marker",
+      "duration": 0.3
+    }
+  ],
+  "beats": [
+    {
+      "start": 0,
+      "end": 3,
+      "frameAt": 2,
+      "words": "Silent illustrative starter; replace with aligned narration.",
+      "onScreen": "فكرة واحدة / تبدأ من هنا",
+      "transition": "Composed opening on the right of one cork wall.",
+      "sounds": "Felt-tip marker."
+    },
+    {
+      "start": 3,
+      "end": 7,
+      "frameAt": 5,
+      "words": "Silent illustrative starter; replace with aligned narration.",
+      "onScreen": "خطوة واضحة / ثم نربط الأفكار",
+      "transition": "Camera travels left following red yarn.",
+      "sounds": "Yarn pull, paper slap, pin, marker."
+    },
+    {
+      "start": 7,
+      "end": 10,
+      "frameAt": 9,
+      "words": "Silent illustrative starter; replace with aligned narration.",
+      "onScreen": "Both notes remain visible.",
+      "transition": "Pull back to connect both ideas.",
+      "sounds": "Quiet hold."
+    }
+  ],
+  "assumptions": "Example timing only. No real narration is included."
+}

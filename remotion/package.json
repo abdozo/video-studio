@@ -1,0 +1,37 @@
+{
+  "name": "video-studio-remotion",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Remotion renderer for Video Studio.",
+  "scripts": {
+    "gen": "node scripts/gen-registry.mjs",
+    "typecheck": "tsc --noEmit",
+    "studio": "node scripts/gen-registry.mjs && remotion studio src/index.ts",
+    "render": "node scripts/gen-registry.mjs && node scripts/render-all.mjs",
+    "still": "node scripts/gen-registry.mjs && node scripts/render-all.mjs --still"
+  },
+  "dependencies": {
+    "@react-three/fiber": "8.18.0",
+    "@remotion/bundler": "^4.0.486",
+    "@remotion/cli": "^4.0.486",
+    "@remotion/google-fonts": "^4.0.486",
+    "@remotion/lottie": "^4.0.486",
+    "@remotion/paths": "^4.0.486",
+    "@remotion/renderer": "^4.0.486",
+    "@remotion/shapes": "^4.0.486",
+    "@remotion/three": "4.0.486",
+    "chroma-js": "^3.2.0",
+    "lucide-react": "^1.23.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.486",
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "@types/chroma-js": "^3.1.2",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@types/three": "0.169.0",
+    "typescript": "^5.9.3"
+  }
+}

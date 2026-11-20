@@ -1,0 +1,10 @@
+{
+  "generator": "tools/synthesize_foley.py",
+  "kind": "air-swish",
+  "seed": 7,
+  "duration_s": 0.46,
+  "sample_rate": 48000,
+  "license": "MIT, same as repository LICENSE; synthesized locally without external samples",
+  "generator_sha256": "eaf5beb0b6272c1d5421c96e35ccbc32d6be887dff8b599485c5ddcd4acbf62a",
+  "audio_sha256": "bf0c11b22ce7fd8715f1f428552d5be223d4c12c890c405ec6540f276efd5430"
+}

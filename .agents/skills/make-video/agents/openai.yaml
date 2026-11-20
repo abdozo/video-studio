@@ -1,0 +1,6 @@
+interface:
+  display_name: "Make Video"
+  short_description: "Create horizontal long-form Remotion videos"
+  default_prompt: "Use $make-video to create a regular horizontal YouTube video."
+policy:
+  allow_implicit_invocation: true

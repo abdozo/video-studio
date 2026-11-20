@@ -1,0 +1,132 @@
+{
+  "title": "معاينة صامتة · التوقيتات للتوضيح فقط",
+  "showTitle": true,
+  "visualMode": "stick",
+  "captionMode": "word-highlight",
+  "captions": [
+    {
+      "start": 0,
+      "end": 3,
+      "text": "كل كلمة تظهر مع الكلام",
+      "words": [
+        {
+          "text": "كل",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "text": "كلمة",
+          "start": 0.6,
+          "end": 1.2
+        },
+        {
+          "text": "تظهر",
+          "start": 1.2,
+          "end": 1.8
+        },
+        {
+          "text": "مع",
+          "start": 1.8,
+          "end": 2.4
+        },
+        {
+          "text": "الكلام",
+          "start": 2.4,
+          "end": 3.0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "end": 6,
+      "text": "والعبارة المهمة تثبت على قصاصة",
+      "words": [
+        {
+          "text": "والعبارة",
+          "start": 3.0,
+          "end": 3.6
+        },
+        {
+          "text": "المهمة",
+          "start": 3.6,
+          "end": 4.2
+        },
+        {
+          "text": "تثبت",
+          "start": 4.2,
+          "end": 4.8
+        },
+        {
+          "text": "على",
+          "start": 4.8,
+          "end": 5.4
+        },
+        {
+          "text": "قصاصة",
+          "start": 5.4,
+          "end": 6.0
+        }
+      ]
+    },
+    {
+      "start": 6,
+      "end": 9,
+      "text": "ثم نعود إلى لقطة الشيخ",
+      "words": [
+        {
+          "text": "ثم",
+          "start": 6.0,
+          "end": 6.6
+        },
+        {
+          "text": "نعود",
+          "start": 6.6,
+          "end": 7.2
+        },
+        {
+          "text": "إلى",
+          "start": 7.2,
+          "end": 7.8
+        },
+        {
+          "text": "لقطة",
+          "start": 7.8,
+          "end": 8.4
+        },
+        {
+          "text": "الشيخ",
+          "start": 8.4,
+          "end": 9.0
+        }
+      ]
+    }
+  ],
+  "emphasis": [
+    {
+      "start": 1,
+      "end": 5.5,
+      "text": "عبارة مرجعية أو كلمة مؤثرة",
+      "kind": "label"
+    }
+  ],
+  "cutaways": [
+    {
+      "start": 0,
+      "end": 3,
+      "kind": "stick",
+      "scene": "regret"
+    },
+    {
+      "start": 3,
+      "end": 6,
+      "kind": "stick",
+      "scene": "prayer"
+    },
+    {
+      "start": 6,
+      "end": 9,
+      "kind": "stick",
+      "scene": "hope"
+    }
+  ]
+}

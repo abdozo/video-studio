@@ -1,0 +1,6 @@
+interface:
+  display_name: "Make Collage Short"
+  short_description: "Create layered documentary collage Shorts"
+  default_prompt: "Use $make-vox to create a layered documentary collage Short."
+policy:
+  allow_implicit_invocation: true

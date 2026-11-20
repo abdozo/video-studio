@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Kalam",
+    "weight": "700",
+    "url": "https://fonts.gstatic.com/s/kalam/v18/YA9Qr0Wd4kDdMtDqHTLMkiQ.woff2",
+    "licenseUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/kalam/OFL.txt"
+  },
+  {
+    "name": "Caveat",
+    "weight": "700",
+    "url": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7ZjYY.woff2",
+    "licenseUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/caveat/OFL.txt"
+  },
+  {
+    "name": "GloriaHallelujah",
+    "weight": "400",
+    "url": "https://fonts.gstatic.com/s/gloriahallelujah/v24/LYjYdHv3kUk9BMV96EIswT9DIbW-MIS11zM.woff2",
+    "licenseUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/gloriahallelujah/OFL.txt"
+  },
+  {
+    "name": "PermanentMarker",
+    "weight": "400",
+    "url": "https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Cfw.woff2",
+    "licenseUrl": "https://raw.githubusercontent.com/google/fonts/main/apache/permanentmarker/LICENSE.txt"
+  },
+  {
+    "name": "RockSalt",
+    "weight": "400",
+    "url": "https://fonts.gstatic.com/s/rocksalt/v24/MwQ0bhv11fWD6QsAVOZrt0M6.woff2",
+    "licenseUrl": "https://raw.githubusercontent.com/google/fonts/main/apache/rocksalt/LICENSE.txt"
+  }
+]

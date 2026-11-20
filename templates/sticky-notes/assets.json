@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "source": "Owner-supplied Sticky-Note Wall reference, preserved verbatim in REFERENCE.txt",
+  "generativeImages": false,
+  "assets": {
+    "cork": "kit.js: bigCork",
+    "stickyNote": "kit.js: note",
+    "adhesiveTape": "kit.js: tape",
+    "pushPin": "kit.js: pinShadow + pinHead",
+    "redYarn": "kit.js: yarn",
+    "markerArrows": "kit.js: mline + arrowM + qpts",
+    "paperGrain": "kit.js: grainPattern",
+    "lightingGrainVignette": "helpers.js + scene.js",
+    "arabicTextAndDoodles": "scene.js",
+    "foley": "sound.js + scene.js: scoreSound",
+    "font": "Arabic.ttf"
+  },
+  "fontProvenance": "Unchanged pilot Noto Naskh Arabic. Embedded name table identifies SIL Open Font License 1.1; license preserved in Arabic.LICENSE.txt.",
+  "reuse": "Import these assets. Change scene data and cues; keep textures, shadows and finishing passes."
+}

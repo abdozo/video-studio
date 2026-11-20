@@ -1,0 +1,6 @@
+interface:
+  display_name: "Make AI Short"
+  short_description: "Create generative-video vertical Shorts"
+  default_prompt: "Use $make-ai-short to create a generative-video vertical Short."
+policy:
+  allow_implicit_invocation: true

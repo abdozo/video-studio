@@ -1,0 +1,42 @@
+# Local productions. Keep only the empty workspace marker.
+/projects/*
+!/projects/.gitkeep
+
+# Local credentials and settings
+.env
+.env.*
+!.env.example
+!.env.*.example
+/.codex/
+/.claude/settings.local.json
+/.fallow/
+.idea/
+.vscode/
+.DS_Store
+._*
+Thumbs.db
+*.swp
+
+# Dependencies, caches, and generated files
+node_modules/
+.cache/
+.remotion/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+*.tsbuildinfo
+npm-debug.log*
+/remotion/.public/
+/remotion/src/registry.gen.tsx
+/remotion/src/shots.manifest.json
+/remotion/out/
+/output/
+/tmp/
+/generated_images/
+/logs/

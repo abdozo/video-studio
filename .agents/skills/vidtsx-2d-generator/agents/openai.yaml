@@ -1,0 +1,6 @@
+interface:
+  display_name: "VidTSX 2D Generator"
+  short_description: "Build reliable frame-driven Remotion scenes"
+  default_prompt: "Use $vidtsx-2d-generator to build a frame-driven Remotion scene."
+policy:
+  allow_implicit_invocation: true

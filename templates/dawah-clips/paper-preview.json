@@ -1,0 +1,67 @@
+{
+  "title": "معاينة صامتة · قصاصات بدون كابشنز",
+  "showTitle": true,
+  "visualMode": "stick",
+  "captionMode": "none",
+  "captions": [
+    {
+      "start": 0,
+      "end": 12,
+      "text": "هذه الترجمة يجب ألا تظهر"
+    }
+  ],
+  "emphasis": [
+    {
+      "start": 0.4,
+      "end": 2.8,
+      "text": "عبارة قصيرة مؤثرة",
+      "kind": "label",
+      "animation": "rise",
+      "paper": "torn"
+    },
+    {
+      "start": 3,
+      "end": 5.8,
+      "text": "قصاصة مرجعية واضحة",
+      "kind": "label",
+      "animation": "slide",
+      "paper": "strip"
+    },
+    {
+      "start": 6,
+      "end": 8.8,
+      "text": "مساحة للمعنى",
+      "kind": "summary",
+      "animation": "unfold",
+      "paper": "note"
+    },
+    {
+      "start": 9,
+      "end": 12,
+      "text": "خطوة صغيرة تفتح أملًا",
+      "kind": "label",
+      "animation": "stamp",
+      "paper": "torn"
+    }
+  ],
+  "cutaways": [
+    {
+      "start": 0,
+      "end": 3,
+      "kind": "stick",
+      "scene": "regret"
+    },
+    {
+      "start": 3,
+      "end": 6,
+      "kind": "stick",
+      "scene": "prayer"
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "kind": "stick",
+      "scene": "hope"
+    }
+  ]
+}

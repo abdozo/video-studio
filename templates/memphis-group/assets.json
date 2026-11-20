@@ -1,0 +1,18 @@
+{
+  "reference": "REFERENCE.txt",
+  "helpers": "Exact supplied H library, wrapped in module scope",
+  "sound": "Exact supplied SOUND library",
+  "drawingRecipes": "Supplied Memphis recipes, before explainMemphis; subject-specific props are not rendered",
+  "fonts": [
+    {
+      "name": "Fredoka",
+      "url": "https://github.com/google/fonts/tree/main/ofl/fredoka",
+      "license": "SIL OFL 1.1, Fredoka.LICENSE.txt"
+    },
+    {
+      "name": "Rubik Mono One",
+      "url": "https://github.com/google/fonts/tree/main/ofl/rubikmonoone",
+      "license": "SIL OFL 1.1, RubikMonoOne.LICENSE.txt"
+    }
+  ]
+}

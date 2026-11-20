@@ -1,0 +1,6 @@
+interface:
+  display_name: "Suggest SFX"
+  short_description: "Plan and mix restrained licensed sound effects"
+  default_prompt: "Use $suggest-sfx to plan a tasteful licensed sound-effects pass."
+policy:
+  allow_implicit_invocation: true

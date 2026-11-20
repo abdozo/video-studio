@@ -1,0 +1,6 @@
+interface:
+  display_name: "Whiteboard Template"
+  short_description: "Design classic marker-drawn whiteboard animation"
+  default_prompt: "Use $whiteboard-template to animate a classic whiteboard story."
+policy:
+  allow_implicit_invocation: true
