@@ -1,5 +1,7 @@
 # Sticky-Note Wall
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 Use this template when the owner asks for Sticky Notes, Sticky-Note Wall, a cork-board
 explainer, or the Arabic equivalents ستيكي نوتس / لوحة الورق اللاصق. Read this guide
 and the supplied [original prompt and complete reference](REFERENCE.txt) before designing.

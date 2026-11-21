@@ -1,5 +1,7 @@
 # Motion comic layout references
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 Open these references before planning panel masks for Motion Comic Static or Motion Graphic Animated. Choose a layout based on the framing the scene needs, then record the reference and reading order in the storyboard. Use the examples for composition, crop, gutter width and balloon placement. Use the project's own art and dialogue in the render.
 
 | Reference | When to use it |

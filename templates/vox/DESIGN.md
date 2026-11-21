@@ -1,5 +1,7 @@
 # vox-shorts/ — layered-collage documentary engine ("Vox-style")
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 A new video **type workspace** (sibling of `faceless-shorts/`, `channel-longs/`…) plus a new
 piece of the shared engine. The format: **Vox/Johnny-Harris-style layered collage animation** —
 every scene is dissected into separate image layers (paper background, cutout subjects, maps,

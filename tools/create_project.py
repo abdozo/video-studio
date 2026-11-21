@@ -12,6 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MOTION_COMIC_STATIC = "motion-comic-static"
 MOTION_GRAPHIC_ANIMATED = "motion-graphic-animated"
+EGYPTIAN_COMEDY = "egyptian-comedy-explainer"
+ATLAS_SCENES = ('shadow-puppet-theatre', 'whiteboard-explainer', 'psychedelic-poster', 'tech-glow-explainer', 'papercraft-models')
 COMIC_TEMPLATES = (MOTION_COMIC_STATIC, MOTION_GRAPHIC_ANIMATED, "motion-comic")
 
 
@@ -49,7 +51,45 @@ export const compositionConfig = {{
 const {component_id}: React.FC = () => <DawahClip data={{data as DawahClipData}} />;
 export default {component_id};
 '''
-    if template == "animation":
+    if template == EGYPTIAN_COMEDY:
+        voice = ""
+        if narration_audio:
+            voice = f"""
+    <Sequence from={{Math.round(lead * compositionConfig.fps)}} layout="none">
+      <Audio src={{staticFile({audio})}} />
+    </Sequence>"""
+        remotion_import = "import {Audio, Sequence, staticFile} from 'remotion';" if voice else ""
+        storyboard_import = "lead, scenes" if voice else "scenes"
+        return f"""import React from 'react';
+{remotion_import}
+import {{EgyptianComedyExplainer}} from './Scene';
+import {{{storyboard_import}}} from './storyboard';
+
+export const compositionConfig = {{
+  id: '{component_id}',
+  durationInSeconds: {config['durationSec']},
+  fps: {config['fps']},
+  width: {config['width']},
+  height: {config['height']},
+}};
+
+const {component_id}: React.FC = () => (
+  <>
+    <EgyptianComedyExplainer project={{{json.dumps(project_id)}}} scenes={{scenes}} />{voice}
+  </>
+);
+export default {component_id};
+"""
+    if template in ATLAS_SCENES:
+        body_import = "import {AtlasScene} from './Scene';"
+        body = "<AtlasScene />"
+    elif template == "watercolor-wash":
+        body_import = "import {WatercolorWash} from './Scene';"
+        body = f'<WatercolorWash project={{{json.dumps(project_id)}}} />'
+    elif template == "flat-vector-science":
+        body_import = "import {FlatVectorScience} from './Scene';"
+        body = "<FlatVectorScience />"
+    elif template == "animation":
         body_import = ("import {AnimationStage} from '../../../remotion/src/lib/animation';\n"
                        "import scene from './animation.json';")
         body = f'<AnimationStage project={{{json.dumps(project_id)}}} scene={{scene}} />'
@@ -145,6 +185,8 @@ def create(args: argparse.Namespace) -> dict:
     root = Path(args.root).resolve()
     template = {"motion-comic": MOTION_COMIC_STATIC, "sticky-note-wall": "sticky-notes"}.get(args.template, args.template)
     is_short = args.format == "short"
+    if template in ("flat-vector-science", "watercolor-wash", EGYPTIAN_COMEDY, *ATLAS_SCENES) and is_short:
+        raise SystemExit(f"{template} uses a horizontal canvas; choose --format video")
     if template in ("vox", "ai-short") and not is_short:
         raise SystemExit(f"{template} requires --format short")
     if template == "vector-explainer" and is_short:
@@ -163,13 +205,18 @@ def create(args: argparse.Namespace) -> dict:
     if project_dir.exists():
         raise SystemExit(f"refusing to overwrite existing project: {project_dir}")
 
-    duration = args.duration if args.duration is not None else (42 if is_short else 10 if template in ("sticky-notes", "vector-explainer", "animation") else 120 if template == "company-analysis" else 300)
+    if template == EGYPTIAN_COMEDY and args.language == "en":
+        raise SystemExit(f"{template} uses an Arabic RTL layout; choose --language ar")
+    if template == EGYPTIAN_COMEDY and args.captions not in (None, "none"):
+        raise SystemExit(f"{template} uses timed on-screen titles; choose --captions none")
+
+    duration = args.duration if args.duration is not None else (42 if is_short else 10 if template in ("sticky-notes", "vector-explainer", "animation", "flat-vector-science", "watercolor-wash", *ATLAS_SCENES) else 90.4 if template == EGYPTIAN_COMEDY else 120 if template == "company-analysis" else 300)
     comic_image = getattr(args, "comic_image", None)
     if comic_image and (template not in COMIC_TEMPLATES or not comic_image.is_file()):
         raise SystemExit("--comic-image must be an existing file used with a comic template")
     comic_filename = f"page-01{comic_image.suffix.lower()}" if comic_image else None
     comic_art = f"projects/{project_id}/{comic_filename}" if comic_filename else None
-    language = getattr(args, "language", None) or ("ar" if template == "sticky-notes" else "en")
+    language = getattr(args, "language", None) or ("ar" if template in ("sticky-notes", EGYPTIAN_COMEDY) else "en")
     width, height = ((1080, 1920) if is_short else (1920, 1080))
     narration_audio = None
     if args.narration != "none":
@@ -197,7 +244,7 @@ def create(args: argparse.Namespace) -> dict:
         "vo": [],
         "beats": [],
     }
-    if template in COMIC_TEMPLATES or template == "sticky-notes":
+    if template in COMIC_TEMPLATES or template in ("sticky-notes", EGYPTIAN_COMEDY):
         beats["language"] = language
 
     project_dir.mkdir(parents=True)
@@ -240,8 +287,23 @@ def create(args: argparse.Namespace) -> dict:
                          "The starter is silent illustrative timing, not aligned narration.\n")
     if template == "animation":
         (shot_dir / "animation.json").write_text('{"layers": []}\n',encoding="utf-8")
-    guides = {"animation": "animation", "vox": "vox", "ai-short": "ai-short", "lines-anime": "lines-anime",
+    if template in ("flat-vector-science", *ATLAS_SCENES):
+        shutil.copyfile(ROOT / "templates" / template / "Scene.tsx", shot_dir / "Scene.tsx")
+    if template == "whiteboard-explainer":
+        for reference in ("futurepedia-reference.js", "futurepedia-reference.d.ts"):
+            shutil.copyfile(ROOT / "templates/whiteboard-explainer" / reference, shot_dir / reference)
+    if template == "watercolor-wash":
+        template_dir = ROOT / "templates/watercolor-wash"
+        shutil.copyfile(template_dir / "Scene.tsx", shot_dir / "Scene.tsx")
+        shutil.copyfile(template_dir / "seed-study.png", media_dir / "seed-study.png")
+    guides = {"watercolor-wash": "watercolor-wash", "flat-vector-science": "flat-vector-science", "animation": "animation", "vox": "vox", "ai-short": "ai-short", "lines-anime": "lines-anime",
               "memphis-group": "memphis-group"}
+    if template == EGYPTIAN_COMEDY:
+        template_dir = ROOT / "templates" / template
+        for name in ("Art.tsx", "Scene.tsx", "storyboard.ts"):
+            shutil.copyfile(template_dir / name, shot_dir / name)
+        shutil.copytree(template_dir / "fonts", media_dir, dirs_exist_ok=True)
+    guides.update({name: name for name in (*ATLAS_SCENES, EGYPTIAN_COMEDY)})
     if template in guides:
         guide = "DESIGN.md" if template == "vox" else "IDEAS.md" if template == "ai-short" else "README.md"
         with (project_dir / "script.md").open("a", encoding="utf-8") as script:
@@ -270,10 +332,10 @@ def create(args: argparse.Namespace) -> dict:
 def parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--format", choices=("short", "video"), required=True)
-    ap.add_argument("--template", choices=("motion", "whiteboard", "company-analysis", "dawah-clips", "sticky-notes", "sticky-note-wall", "vector-explainer", "animation", "vox", "ai-short", "lines-anime", "memphis-group", *COMIC_TEMPLATES), default="motion",
+    ap.add_argument("--template", choices=("motion", "whiteboard", "company-analysis", "dawah-clips", "sticky-notes", "sticky-note-wall", "vector-explainer", "animation", "vox", "ai-short", "lines-anime", "memphis-group", "flat-vector-science", "watercolor-wash", EGYPTIAN_COMEDY, *ATLAS_SCENES, *COMIC_TEMPLATES), default="motion",
                     help="motion-comic is a legacy alias for motion-comic-static")
     ap.add_argument("--comic-image", type=Path, help="initial page image for either comic template")
-    ap.add_argument("--language", choices=("ar", "en"), help="reading language (sticky-notes defaults to ar; other templates to en)")
+    ap.add_argument("--language", choices=("ar", "en"), help="reading language (sticky-notes and egyptian-comedy-explainer default to ar; others to en)")
     ap.add_argument("--narration", choices=("ai", "recorded", "none"), default="none")
     ap.add_argument("--captions", choices=("none", "subtitles", "word-highlight"))
     ap.add_argument("--slug", required=True, type=slug_value)

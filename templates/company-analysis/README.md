@@ -1,5 +1,7 @@
 # Company analysis
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 Horizontal research-terminal template, with one persistent application shell rather than slides.
 
 ![Chart reference](reference-chart.png)

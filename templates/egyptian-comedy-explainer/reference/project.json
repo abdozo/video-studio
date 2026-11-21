@@ -1,0 +1,29 @@
+{
+  "id": "family-foundations-comedy-v2",
+  "title": "إحنا بنتجوز ليه؟",
+  "composition": "VideoFamilyFoundationsComedyV2",
+  "entry": "_source/index.tsx",
+  "format": {
+    "mode": "video",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSec": 90.4
+  },
+  "template": "flat-vector-science",
+  "narration": {
+    "mode": "recorded",
+    "audio": "projects/family-foundations-comedy-v2/narration.m4a",
+    "source": "assets/recording.wav",
+    "speed": 1.1,
+    "leadSec": 0.5,
+    "pauseMinSec": 0.34,
+    "pauseRetainedFraction": 0.3,
+    "alignment": "_source/alignment.json"
+  },
+  "captions": {
+    "mode": "none"
+  },
+  "vo": [],
+  "beats": []
+}

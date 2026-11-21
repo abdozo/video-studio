@@ -1,5 +1,7 @@
 # Animation
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 1. Design a character sheet with the angles and expressions needed for the story. Copy the approved reference into the project's `assets/`.
 2. Prepare the SVG in editable pieces. Keep each sleeve and trouser leg continuous and separate the parts that need independent movement or expression changes.
 3. Sketch the shots and pick the hardest action. Rig the character in Rigby2D and preview that action before animating the full sequence. Keep the editable `.rigby` project in `assets/`. For dialogue, sync mouth attachments to the final recording in Rigby2D.

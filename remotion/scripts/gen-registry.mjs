@@ -2,7 +2,7 @@
 //   src/registry.gen.tsx     — imports every shot for Root.tsx
 //   src/shots.manifest.json  — metadata for the bulk renderer
 // Run before `remotion studio` / render. VidTSX-skill files drop in and are picked up automatically.
-import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync, lstatSync, readlinkSync, symlinkSync, unlinkSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync, lstatSync, realpathSync, symlinkSync, unlinkSync } from 'node:fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -13,13 +13,20 @@ const publicDir = path.join(root, '.public');
 const publicProjects = path.join(publicDir, 'projects');
 
 function link(target, destination) {
+  const absoluteTarget = path.resolve(path.dirname(destination), target);
+  let existing;
   try {
-    if (lstatSync(destination).isSymbolicLink() && readlinkSync(destination) === target) return;
-    throw new Error(`Remove conflicting generated path: ${destination}`);
+    existing = lstatSync(destination);
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
-  symlinkSync(target, destination, 'dir');
+  if (existing) {
+    if (existing.isSymbolicLink() && existsSync(destination) &&
+        realpathSync(destination) === realpathSync(absoluteTarget)) return;
+    throw new Error(`Remove conflicting generated path: ${destination}`);
+  }
+  // Junctions let Windows link local directories without Developer Mode.
+  symlinkSync(absoluteTarget, destination, process.platform === 'win32' ? 'junction' : 'dir');
 }
 
 mkdirSync(publicProjects, {recursive:true});

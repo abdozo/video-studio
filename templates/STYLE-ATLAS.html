@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Style Atlas · Video Studio</title>
+<style>
+:root{color-scheme:light;--paper:#f0f3f1;--ink:#112e2c;--muted:#4e6663;--line:#cbd8d3;--accent:#08765e;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{width:min(1216px,calc(100% - 48px));margin:auto;padding:56px 0 64px}
+header{display:flex;align-items:end;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);padding-bottom:25px}
+header a,footer a{color:var(--accent)}
+.brand{font-size:.79rem;font-weight:730;letter-spacing:.14em;text-transform:uppercase}
+h1{font-family:Georgia,serif;font-size:clamp(3rem,8vw,6.2rem);font-weight:400;line-height:1;letter-spacing:-.06em;margin:8px 0}
+header p{color:var(--muted);margin:12px 0 0}
+.filters{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:22px 0}
+input,select{font:inherit;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:8px;padding:8px 12px;min-height:42px}
+input{min-width:0;flex:1 1 230px}
+select{max-width:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:24px}
+article{background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.style-preview{display:block;height:auto;width:100%;aspect-ratio:16/9;background:#193230;object-fit:contain}
+.details{padding:16px 19px 20px}
+h2{margin:.2em 0 .55em;font-size:1.3rem}
+.meta{margin:0;color:var(--muted);font: .76rem/1.5 ui-monospace,monospace}
+.details a{color:var(--accent);text-underline-offset:.25em;font-weight:620}
+footer{border-top:1px solid var(--line);margin-top:32px;padding-top:17px}
+[hidden]{display:none!important}
+@media(max-width:520px){main{width:calc(100% - 28px);padding-top:28px}header{display:block}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div><span class="brand">Video Studio</span><h1>Style Atlas</h1><p>How does AI learn? 86 Futurepedia styles and a Video Studio comedy explainer. Play the original previews when the video files are available.</p></div>
+  <a href="https://www.futurepedia.io/app/resources/ai-style-atlas">Futurepedia reference</a>
+</header>
+<div class="filters" hidden>
+  <input type="search" placeholder="Search styles" aria-label="Search styles">
+  <select aria-label="Style category"><option value="">All categories</option></select>
+</div>
+<section class="grid" aria-label="Templates">
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/flat-vector-science.webp" alt="Flat-Vector Science preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/flat-vector-science.mp4">
+    <div class="details"><p class="meta">01 · Popular Explainer Looks</p><h2>Flat-Vector Science</h2>
+      <a href="flat-vector-science/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Painterly">
+    <img class="style-preview" src="style-atlas-previews/watercolor-wash.webp" alt="Watercolor Wash preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/watercolor-wash.mp4">
+    <div class="details"><p class="meta">02 · Painterly</p><h2>Watercolor Wash</h2>
+      <a href="watercolor-wash/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/shadow-puppet-theatre.webp" alt="Shadow Puppet Theatre preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/shadow-puppet-theatre.mp4">
+    <div class="details"><p class="meta">03 · Paper &amp; Craft</p><h2>Shadow Puppet Theatre</h2>
+      <a href="shadow-puppet-theatre/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/whiteboard-explainer.webp" alt="Whiteboard Explainer preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/whiteboard-explainer.mp4">
+    <div class="details"><p class="meta">04 · Hand-Drawn</p><h2>Whiteboard Explainer</h2>
+      <a href="whiteboard-explainer/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Cosmic &amp; Psychedelic">
+    <img class="style-preview" src="style-atlas-previews/psychedelic-poster.webp" alt="Psychedelic Poster preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/psychedelic-poster.mp4">
+    <div class="details"><p class="meta">05 · Cosmic &amp; Psychedelic</p><h2>Psychedelic Poster</h2>
+      <a href="psychedelic-poster/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/tech-glow-explainer.webp" alt="Tech Glow Explainer preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/tech-glow-explainer.mp4">
+    <div class="details"><p class="meta">06 · Popular Explainer Looks</p><h2>Tech Glow Explainer</h2>
+      <a href="tech-glow-explainer/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/papercraft-models.webp" alt="Papercraft Models preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-original-references/output/papercraft-models.mp4">
+    <div class="details"><p class="meta">07 · Popular Explainer Looks</p><h2>Papercraft Models</h2>
+      <a href="papercraft-models/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/08-1940s-film-noir.webp" alt="1940s Film Noir preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/08-1940s-film-noir.mp4">
+    <div class="details"><p class="meta">08 · Light &amp; Imaging</p><h2>1940s Film Noir</h2>
+      <a href="1940s-film-noir/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/09-manim-style-math.webp" alt="Manim-Style Math preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/09-manim-style-math.mp4">
+    <div class="details"><p class="meta">09 · Popular Explainer Looks</p><h2>Manim-Style Math</h2>
+      <a href="manim-style-math/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/10-illuminated-manuscript.webp" alt="Illuminated Manuscript preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/10-illuminated-manuscript.mp4">
+    <div class="details"><p class="meta">10 · Illustration</p><h2>Illuminated Manuscript</h2>
+      <a href="illuminated-manuscript/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/11-editorial-essay-collage.webp" alt="Editorial Essay Collage preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/11-editorial-essay-collage.mp4">
+    <div class="details"><p class="meta">11 · Popular Explainer Looks</p><h2>Editorial Essay Collage</h2>
+      <a href="editorial-essay-collage/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/12-bioluminescent-deep-sea.webp" alt="Bioluminescent Deep Sea preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/12-bioluminescent-deep-sea.mp4">
+    <div class="details"><p class="meta">12 · Light &amp; Imaging</p><h2>Bioluminescent Deep Sea</h2>
+      <a href="bioluminescent-deep-sea/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/13-product-launch-reveal.webp" alt="Product Launch Reveal preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/13-product-launch-reveal.mp4">
+    <div class="details"><p class="meta">13 · Popular Explainer Looks</p><h2>Product Launch Reveal</h2>
+      <a href="product-launch-reveal/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Print">
+    <img class="style-preview" src="style-atlas-previews/14-halftone-pop-panel.webp" alt="Halftone Pop Panel preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/14-halftone-pop-panel.mp4">
+    <div class="details"><p class="meta">14 · Print</p><h2>Halftone Pop Panel</h2>
+      <a href="halftone-pop-panel/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Dimensional">
+    <img class="style-preview" src="style-atlas-previews/15-isometric-pastel.webp" alt="Isometric Pastel preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/15-isometric-pastel.mp4">
+    <div class="details"><p class="meta">15 · Dimensional</p><h2>Isometric Pastel</h2>
+      <a href="isometric-pastel/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/16-oscilloscope-vector-art.webp" alt="Oscilloscope Vector Art preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/16-oscilloscope-vector-art.mp4">
+    <div class="details"><p class="meta">16 · Retro Digital</p><h2>Oscilloscope Vector Art</h2>
+      <a href="oscilloscope-vector-art/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Print">
+    <img class="style-preview" src="style-atlas-previews/17-risograph-zine.webp" alt="Risograph Zine preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/17-risograph-zine.mp4">
+    <div class="details"><p class="meta">17 · Print</p><h2>Risograph Zine</h2>
+      <a href="risograph-zine/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/18-claymation-set.webp" alt="Claymation Set preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/18-claymation-set.mp4">
+    <div class="details"><p class="meta">18 · Paper &amp; Craft</p><h2>Claymation Set</h2>
+      <a href="claymation-set/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/19-neon-sign-at-night.webp" alt="Neon Sign at Night preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/19-neon-sign-at-night.mp4">
+    <div class="details"><p class="meta">19 · Light &amp; Imaging</p><h2>Neon Sign at Night</h2>
+      <a href="neon-sign-at-night/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/20-kawaii-anime.webp" alt="Kawaii Anime preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/20-kawaii-anime.mp4">
+    <div class="details"><p class="meta">20 · Popular Explainer Looks</p><h2>Kawaii Anime</h2>
+      <a href="kawaii-anime/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Art &amp; Design Movements">
+    <img class="style-preview" src="style-atlas-previews/21-ukiyo-e-woodblock.webp" alt="Ukiyo-e Woodblock preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/21-ukiyo-e-woodblock.mp4">
+    <div class="details"><p class="meta">21 · Art &amp; Design Movements</p><h2>Ukiyo-e Woodblock</h2>
+      <a href="ukiyo-e-woodblock/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/22-16-bit-pixel-odyssey.webp" alt="16-Bit Pixel Odyssey preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/22-16-bit-pixel-odyssey.mp4">
+    <div class="details"><p class="meta">22 · Retro Digital</p><h2>16-Bit Pixel Odyssey</h2>
+      <a href="16-bit-pixel-odyssey/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/23-chalkboard-lesson.webp" alt="Chalkboard Lesson preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/23-chalkboard-lesson.mp4">
+    <div class="details"><p class="meta">23 · Hand-Drawn</p><h2>Chalkboard Lesson</h2>
+      <a href="chalkboard-lesson/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/24-cut-paper-diorama.webp" alt="Cut-Paper Diorama preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/24-cut-paper-diorama.mp4">
+    <div class="details"><p class="meta">24 · Paper &amp; Craft</p><h2>Cut-Paper Diorama</h2>
+      <a href="cut-paper-diorama/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Painterly">
+    <img class="style-preview" src="style-atlas-previews/25-cathedral-glass.webp" alt="Cathedral Glass preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/25-cathedral-glass.mp4">
+    <div class="details"><p class="meta">25 · Painterly</p><h2>Cathedral Glass</h2>
+      <a href="cathedral-glass/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Data &amp; Information">
+    <img class="style-preview" src="style-atlas-previews/26-editorial-chart.webp" alt="Editorial Chart preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/26-editorial-chart.mp4">
+    <div class="details"><p class="meta">26 · Data &amp; Information</p><h2>Editorial Chart</h2>
+      <a href="editorial-chart/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro UI &amp; Neon">
+    <img class="style-preview" src="style-atlas-previews/27-synthwave-outrun.webp" alt="Synthwave Outrun preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/27-synthwave-outrun.mp4">
+    <div class="details"><p class="meta">27 · Retro UI &amp; Neon</p><h2>Synthwave Outrun</h2>
+      <a href="synthwave-outrun/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/28-origami-studio.webp" alt="Origami Studio preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/28-origami-studio.mp4">
+    <div class="details"><p class="meta">28 · Paper &amp; Craft</p><h2>Origami Studio</h2>
+      <a href="origami-studio/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Print">
+    <img class="style-preview" src="style-atlas-previews/29-linocut-relief-print.webp" alt="Linocut Relief Print preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/29-linocut-relief-print.mp4">
+    <div class="details"><p class="meta">29 · Print</p><h2>Linocut Relief Print</h2>
+      <a href="linocut-relief-print/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/30-holographic-foil-card.webp" alt="Holographic Foil Card preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/30-holographic-foil-card.mp4">
+    <div class="details"><p class="meta">30 · Light &amp; Imaging</p><h2>Holographic Foil Card</h2>
+      <a href="holographic-foil-card/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Dimensional">
+    <img class="style-preview" src="style-atlas-previews/31-voxel-diorama.webp" alt="Voxel Diorama preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/31-voxel-diorama.mp4">
+    <div class="details"><p class="meta">31 · Dimensional</p><h2>Voxel Diorama</h2>
+      <a href="voxel-diorama/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Painterly">
+    <img class="style-preview" src="style-atlas-previews/32-sumi-e-ink-wash.webp" alt="Sumi-e Ink Wash preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/32-sumi-e-ink-wash.mp4">
+    <div class="details"><p class="meta">32 · Painterly</p><h2>Sumi-e Ink Wash</h2>
+      <a href="sumi-e-ink-wash/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/33-etch-a-sketch-toy.webp" alt="Etch A Sketch Toy preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/33-etch-a-sketch-toy.mp4">
+    <div class="details"><p class="meta">33 · Hand-Drawn</p><h2>Etch A Sketch Toy</h2>
+      <a href="etch-a-sketch-toy/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Cosmic &amp; Psychedelic">
+    <img class="style-preview" src="style-atlas-previews/34-cosmic-star-chart.webp" alt="Cosmic Star Chart preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/34-cosmic-star-chart.mp4">
+    <div class="details"><p class="meta">34 · Cosmic &amp; Psychedelic</p><h2>Cosmic Star Chart</h2>
+      <a href="cosmic-star-chart/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/35-punk-zine-collage.webp" alt="Punk Zine Collage preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/35-punk-zine-collage.mp4">
+    <div class="details"><p class="meta">35 · Paper &amp; Craft</p><h2>Punk Zine Collage</h2>
+      <a href="punk-zine-collage/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/36-thermal-camera.webp" alt="Thermal Camera preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/36-thermal-camera.mp4">
+    <div class="details"><p class="meta">36 · Light &amp; Imaging</p><h2>Thermal Camera</h2>
+      <a href="thermal-camera/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/37-engineering-blueprint.webp" alt="Engineering Blueprint preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/37-engineering-blueprint.mp4">
+    <div class="details"><p class="meta">37 · Hand-Drawn</p><h2>Engineering Blueprint</h2>
+      <a href="engineering-blueprint/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Painterly">
+    <img class="style-preview" src="style-atlas-previews/38-impasto-night.webp" alt="Impasto Night preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/38-impasto-night.mp4">
+    <div class="details"><p class="meta">38 · Painterly</p><h2>Impasto Night</h2>
+      <a href="impasto-night/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro UI &amp; Neon">
+    <img class="style-preview" src="style-atlas-previews/39-win95-desktop.webp" alt="Win95 Desktop preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/39-win95-desktop.mp4">
+    <div class="details"><p class="meta">39 · Retro UI &amp; Neon</p><h2>Win95 Desktop</h2>
+      <a href="win95-desktop/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Dimensional">
+    <img class="style-preview" src="style-atlas-previews/40-low-poly-faceted.webp" alt="Low-Poly Faceted preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/40-low-poly-faceted.mp4">
+    <div class="details"><p class="meta">40 · Dimensional</p><h2>Low-Poly Faceted</h2>
+      <a href="low-poly-faceted/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/41-manga-page.webp" alt="Manga Page preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/41-manga-page.mp4">
+    <div class="details"><p class="meta">41 · Illustration</p><h2>Manga Page</h2>
+      <a href="manga-page/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Print">
+    <img class="style-preview" src="style-atlas-previews/42-wood-type-letterpress.webp" alt="Wood Type Letterpress preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/42-wood-type-letterpress.mp4">
+    <div class="details"><p class="meta">42 · Print</p><h2>Wood Type Letterpress</h2>
+      <a href="wood-type-letterpress/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/43-light-painting.webp" alt="Light Painting preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/43-light-painting.mp4">
+    <div class="details"><p class="meta">43 · Light &amp; Imaging</p><h2>Light Painting</h2>
+      <a href="light-painting/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/44-felt-patchwork.webp" alt="Felt &amp; Patchwork preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/44-felt-patchwork.mp4">
+    <div class="details"><p class="meta">44 · Paper &amp; Craft</p><h2>Felt &amp; Patchwork</h2>
+      <a href="felt-patchwork/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/45-phosphor-terminal.webp" alt="Phosphor Terminal preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/45-phosphor-terminal.mp4">
+    <div class="details"><p class="meta">45 · Retro Digital</p><h2>Phosphor Terminal</h2>
+      <a href="phosphor-terminal/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Dimensional">
+    <img class="style-preview" src="style-atlas-previews/46-glassmorphism-ui.webp" alt="Glassmorphism UI preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/46-glassmorphism-ui.mp4">
+    <div class="details"><p class="meta">46 · Dimensional</p><h2>Glassmorphism UI</h2>
+      <a href="glassmorphism-ui/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/47-tarot-card.webp" alt="Tarot Card preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/47-tarot-card.mp4">
+    <div class="details"><p class="meta">47 · Illustration</p><h2>Tarot Card</h2>
+      <a href="tarot-card/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Data &amp; Information">
+    <img class="style-preview" src="style-atlas-previews/48-transit-map.webp" alt="Transit Map preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/48-transit-map.mp4">
+    <div class="details"><p class="meta">48 · Data &amp; Information</p><h2>Transit Map</h2>
+      <a href="transit-map/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Painterly">
+    <img class="style-preview" src="style-atlas-previews/49-gouache-travel-poster.webp" alt="Gouache Travel Poster preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/49-gouache-travel-poster.mp4">
+    <div class="details"><p class="meta">49 · Painterly</p><h2>Gouache Travel Poster</h2>
+      <a href="gouache-travel-poster/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/50-napkin-sketch.webp" alt="Napkin Sketch preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/50-napkin-sketch.mp4">
+    <div class="details"><p class="meta">50 · Hand-Drawn</p><h2>Napkin Sketch</h2>
+      <a href="napkin-sketch/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Art &amp; Design Movements">
+    <img class="style-preview" src="style-atlas-previews/51-art-deco-foil.webp" alt="Art Deco Foil preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/51-art-deco-foil.mp4">
+    <div class="details"><p class="meta">51 · Art &amp; Design Movements</p><h2>Art Deco Foil</h2>
+      <a href="art-deco-foil/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Light &amp; Imaging">
+    <img class="style-preview" src="style-atlas-previews/52-radiograph-on-lightbox.webp" alt="Radiograph on Lightbox preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/52-radiograph-on-lightbox.mp4">
+    <div class="details"><p class="meta">52 · Light &amp; Imaging</p><h2>Radiograph on Lightbox</h2>
+      <a href="radiograph-on-lightbox/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro UI &amp; Neon">
+    <img class="style-preview" src="style-atlas-previews/53-vaporwave.webp" alt="Vaporwave preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/53-vaporwave.mp4">
+    <div class="details"><p class="meta">53 · Retro UI &amp; Neon</p><h2>Vaporwave</h2>
+      <a href="vaporwave/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Generative &amp; Type">
+    <img class="style-preview" src="style-atlas-previews/54-ebru-paper-marbling.webp" alt="Ebru Paper Marbling preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/54-ebru-paper-marbling.mp4">
+    <div class="details"><p class="meta">54 · Generative &amp; Type</p><h2>Ebru Paper Marbling</h2>
+      <a href="ebru-paper-marbling/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Data &amp; Information">
+    <img class="style-preview" src="style-atlas-previews/55-isotype-pictograms.webp" alt="ISOTYPE Pictograms preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/55-isotype-pictograms.mp4">
+    <div class="details"><p class="meta">55 · Data &amp; Information</p><h2>ISOTYPE Pictograms</h2>
+      <a href="isotype-pictograms/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Dimensional">
+    <img class="style-preview" src="style-atlas-previews/56-soft-3d-clay.webp" alt="Soft 3D Clay preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/56-soft-3d-clay.mp4">
+    <div class="details"><p class="meta">56 · Dimensional</p><h2>Soft 3D Clay</h2>
+      <a href="soft-3d-clay/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Paper &amp; Craft">
+    <img class="style-preview" src="style-atlas-previews/57-cross-stitch-sampler.webp" alt="Cross-Stitch Sampler preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/57-cross-stitch-sampler.mp4">
+    <div class="details"><p class="meta">57 · Paper &amp; Craft</p><h2>Cross-Stitch Sampler</h2>
+      <a href="cross-stitch-sampler/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Art &amp; Design Movements">
+    <img class="style-preview" src="style-atlas-previews/58-constructivist-propaganda.webp" alt="Constructivist Propaganda preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/58-constructivist-propaganda.mp4">
+    <div class="details"><p class="meta">58 · Art &amp; Design Movements</p><h2>Constructivist Propaganda</h2>
+      <a href="constructivist-propaganda/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/59-pocket-monochrome.webp" alt="Pocket Monochrome preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/59-pocket-monochrome.mp4">
+    <div class="details"><p class="meta">59 · Retro Digital</p><h2>Pocket Monochrome</h2>
+      <a href="pocket-monochrome/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/60-botanical-plate.webp" alt="Botanical Plate preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/60-botanical-plate.mp4">
+    <div class="details"><p class="meta">60 · Illustration</p><h2>Botanical Plate</h2>
+      <a href="botanical-plate/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Generative &amp; Type">
+    <img class="style-preview" src="style-atlas-previews/61-kinetic-type.webp" alt="Kinetic Type preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/61-kinetic-type.mp4">
+    <div class="details"><p class="meta">61 · Generative &amp; Type</p><h2>Kinetic Type</h2>
+      <a href="kinetic-type/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/62-byzantine-mosaic.webp" alt="Byzantine Mosaic preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/62-byzantine-mosaic.mp4">
+    <div class="details"><p class="meta">62 · Illustration</p><h2>Byzantine Mosaic</h2>
+      <a href="byzantine-mosaic/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro UI &amp; Neon">
+    <img class="style-preview" src="style-atlas-previews/63-y2k-liquid-chrome.webp" alt="Y2K Liquid Chrome preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/63-y2k-liquid-chrome.mp4">
+    <div class="details"><p class="meta">63 · Retro UI &amp; Neon</p><h2>Y2K Liquid Chrome</h2>
+      <a href="y2k-liquid-chrome/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/64-sticky-note-wall.webp" alt="Sticky-Note Wall preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/64-sticky-note-wall.mp4">
+    <div class="details"><p class="meta">64 · Illustration</p><h2>Sticky-Note Wall</h2>
+      <a href="sticky-note-wall/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Print">
+    <img class="style-preview" src="style-atlas-previews/65-vintage-newsprint.webp" alt="Vintage Newsprint preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/65-vintage-newsprint.mp4">
+    <div class="details"><p class="meta">65 · Print</p><h2>Vintage Newsprint</h2>
+      <a href="vintage-newsprint/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Dimensional">
+    <img class="style-preview" src="style-atlas-previews/66-hidden-line-wireframe.webp" alt="Hidden-Line Wireframe preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/66-hidden-line-wireframe.mp4">
+    <div class="details"><p class="meta">66 · Dimensional</p><h2>Hidden-Line Wireframe</h2>
+      <a href="hidden-line-wireframe/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Art &amp; Design Movements">
+    <img class="style-preview" src="style-atlas-previews/67-memphis-group.webp" alt="Memphis Group preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/67-memphis-group.mp4">
+    <div class="details"><p class="meta">67 · Art &amp; Design Movements</p><h2>Memphis Group</h2>
+      <a href="atlas-memphis-group/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/68-ballpoint-notebook.webp" alt="Ballpoint Notebook preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/68-ballpoint-notebook.mp4">
+    <div class="details"><p class="meta">68 · Hand-Drawn</p><h2>Ballpoint Notebook</h2>
+      <a href="ballpoint-notebook/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Generative &amp; Type">
+    <img class="style-preview" src="style-atlas-previews/69-op-art-sphere.webp" alt="Op Art Sphere preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/69-op-art-sphere.mp4">
+    <div class="details"><p class="meta">69 · Generative &amp; Type</p><h2>Op Art Sphere</h2>
+      <a href="op-art-sphere/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Data &amp; Information">
+    <img class="style-preview" src="style-atlas-previews/70-topographic-survey.webp" alt="Topographic Survey preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/70-topographic-survey.mp4">
+    <div class="details"><p class="meta">70 · Data &amp; Information</p><h2>Topographic Survey</h2>
+      <a href="topographic-survey/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Painterly">
+    <img class="style-preview" src="style-atlas-previews/71-pointillist-afternoon.webp" alt="Pointillist Afternoon preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/71-pointillist-afternoon.mp4">
+    <div class="details"><p class="meta">71 · Painterly</p><h2>Pointillist Afternoon</h2>
+      <a href="pointillist-afternoon/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/72-vector-arcade-1980.webp" alt="Vector Arcade 1980 preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/72-vector-arcade-1980.mp4">
+    <div class="details"><p class="meta">72 · Retro Digital</p><h2>Vector Arcade 1980</h2>
+      <a href="vector-arcade-1980/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Illustration">
+    <img class="style-preview" src="style-atlas-previews/73-patent-drawing.webp" alt="Patent Drawing preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/73-patent-drawing.mp4">
+    <div class="details"><p class="meta">73 · Illustration</p><h2>Patent Drawing</h2>
+      <a href="patent-drawing/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Art &amp; Design Movements">
+    <img class="style-preview" src="style-atlas-previews/74-bauhaus-poster.webp" alt="Bauhaus Poster preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/74-bauhaus-poster.mp4">
+    <div class="details"><p class="meta">74 · Art &amp; Design Movements</p><h2>Bauhaus Poster</h2>
+      <a href="bauhaus-poster/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro UI &amp; Neon">
+    <img class="style-preview" src="style-atlas-previews/75-bitmap-paint-doodle.webp" alt="Bitmap Paint Doodle preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/75-bitmap-paint-doodle.mp4">
+    <div class="details"><p class="meta">75 · Retro UI &amp; Neon</p><h2>Bitmap Paint Doodle</h2>
+      <a href="bitmap-paint-doodle/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Generative &amp; Type">
+    <img class="style-preview" src="style-atlas-previews/76-nail-thread-string-art.webp" alt="Nail &amp; Thread String Art preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/76-nail-thread-string-art.mp4">
+    <div class="details"><p class="meta">76 · Generative &amp; Type</p><h2>Nail &amp; Thread String Art</h2>
+      <a href="nail-thread-string-art/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Data &amp; Information">
+    <img class="style-preview" src="style-atlas-previews/77-ridgeline.webp" alt="Ridgeline preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/77-ridgeline.mp4">
+    <div class="details"><p class="meta">77 · Data &amp; Information</p><h2>Ridgeline</h2>
+      <a href="ridgeline/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Hand-Drawn">
+    <img class="style-preview" src="style-atlas-previews/78-sketchbook-graphite.webp" alt="Sketchbook Graphite preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/78-sketchbook-graphite.mp4">
+    <div class="details"><p class="meta">78 · Hand-Drawn</p><h2>Sketchbook Graphite</h2>
+      <a href="sketchbook-graphite/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro UI &amp; Neon">
+    <img class="style-preview" src="style-atlas-previews/79-teletext-page.webp" alt="Teletext Page preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/79-teletext-page.mp4">
+    <div class="details"><p class="meta">79 · Retro UI &amp; Neon</p><h2>Teletext Page</h2>
+      <a href="teletext-page/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Print">
+    <img class="style-preview" src="style-atlas-previews/80-silkscreen-grid.webp" alt="Silkscreen Grid preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/80-silkscreen-grid.mp4">
+    <div class="details"><p class="meta">80 · Print</p><h2>Silkscreen Grid</h2>
+      <a href="silkscreen-grid/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Generative &amp; Type">
+    <img class="style-preview" src="style-atlas-previews/81-guilloche-security-print.webp" alt="Guilloché Security Print preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/81-guilloche-security-print.mp4">
+    <div class="details"><p class="meta">81 · Generative &amp; Type</p><h2>Guilloché Security Print</h2>
+      <a href="guilloche-security-print/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/82-ascii-demoscene.webp" alt="ASCII Demoscene preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/82-ascii-demoscene.mp4">
+    <div class="details"><p class="meta">82 · Retro Digital</p><h2>ASCII Demoscene</h2>
+      <a href="ascii-demoscene/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Art &amp; Design Movements">
+    <img class="style-preview" src="style-atlas-previews/83-international-typographic-style.webp" alt="International Typographic Style preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/83-international-typographic-style.mp4">
+    <div class="details"><p class="meta">83 · Art &amp; Design Movements</p><h2>International Typographic Style</h2>
+      <a href="international-typographic-style/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Data &amp; Information">
+    <img class="style-preview" src="style-atlas-previews/84-flow-field.webp" alt="Flow Field preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/84-flow-field.mp4">
+    <div class="details"><p class="meta">84 · Data &amp; Information</p><h2>Flow Field</h2>
+      <a href="flow-field/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Retro Digital">
+    <img class="style-preview" src="style-atlas-previews/85-macpaint-1984.webp" alt="MacPaint 1984 preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/85-macpaint-1984.mp4">
+    <div class="details"><p class="meta">85 · Retro Digital</p><h2>MacPaint 1984</h2>
+      <a href="macpaint-1984/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Generative &amp; Type">
+    <img class="style-preview" src="style-atlas-previews/86-multi-scale-truchet.webp" alt="Multi-scale Truchet preview"
+      width="560" height="315" loading="lazy" decoding="async" data-source-video="../projects/atlas-full-references/output/86-multi-scale-truchet.mp4">
+    <div class="details"><p class="meta">86 · Generative &amp; Type</p><h2>Multi-scale Truchet</h2>
+      <a href="multi-scale-truchet/futurepedia-prompt.txt">Original prompt</a></div>
+  </article>
+  <article data-category="Popular Explainer Looks">
+    <img class="style-preview" src="style-atlas-previews/87-egyptian-comedy-explainer.webp" alt="Egyptian Arabic title beside two illustrated characters, a teal door and a sweets tray on dotted paper"
+      width="560" height="315" loading="lazy" decoding="async">
+    <div class="details"><p class="meta">87 · Video Studio</p><h2>Egyptian Comedy Explainer</h2>
+      <a href="egyptian-comedy-explainer/README.md">Template guide</a></div>
+  </article>
+</section>
+<p id="empty" role="status" hidden>No templates match your search.</p>
+</main>
+<script>
+const cards = [...document.querySelectorAll('article[data-category]')];
+const filters = document.querySelector('.filters');
+const search = filters.querySelector('input');
+const category = filters.querySelector('select');
+const empty = document.querySelector('#empty');
+const categories = [...new Set(cards.map(card => card.dataset.category))].sort();
+for (const name of categories) category.add(new Option(name, name));
+function filterCards() {
+  const query = search.value.trim().toLowerCase();
+  for (const card of cards) {
+    const matches = card.textContent.toLowerCase().includes(query);
+    card.hidden = !matches || Boolean(category.value && card.dataset.category !== category.value);
+  }
+  empty.hidden = cards.some(card => !card.hidden);
+}
+search.addEventListener('input', filterCards);
+category.addEventListener('change', filterCards);
+filters.hidden = false;
+
+const previews = document.querySelectorAll('img[data-source-video]');
+const previewObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const image = entry.target;
+    previewObserver.unobserve(image);
+
+    const video = document.createElement('video');
+    video.className = image.className;
+    video.poster = image.src;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.setAttribute('aria-label', image.alt);
+    video.addEventListener('loadedmetadata', () => {
+      image.replaceWith(video);
+    }, { once: true });
+    video.addEventListener('error', () => {
+      video.replaceWith(image);
+    }, { once: true });
+    video.src = image.dataset.sourceVideo;
+  }
+});
+for (const image of previews) previewObserver.observe(image);
+</script>
+</body>
+</html>

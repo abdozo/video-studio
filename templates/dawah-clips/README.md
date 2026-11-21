@@ -1,5 +1,7 @@
 # Dawah clips
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 The owner-supplied [reference direction](REFERENCE.md) supersedes the initial silent
 preview's visual styling. The renderer now implements the speaker-first frame, violet
 word highlight, paper strips, optional cutaways and internal jump cuts.

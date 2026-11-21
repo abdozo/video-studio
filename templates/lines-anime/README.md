@@ -1,5 +1,7 @@
 # Lines Anime
 
+> **Arabic video (RTL).** Start on the right and build toward the left. Draw, write, and reveal elements right to left, and lay out the screen in that same order. Follow the [global Arabic video direction rule](../../AGENTS.md#arabic-video-direction-rtl).
+
 Template identifier: `lines-anime`. Listed in the [project template catalog](../../README.md#templates).
 Use `$make-short` for vertical output or `$make-video` for horizontal output. Both use the
 `motion` scaffold for this template; `--template lines-anime` is not a CLI option.
