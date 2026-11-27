@@ -24,9 +24,59 @@ function Install-Tool {
     if (-not (Get-Command winget.exe -ErrorAction SilentlyContinue)) {
         throw 'Install or update App Installer from Microsoft Store to get winget, then rerun setup.'
     }
-    Invoke-Checked winget.exe @('install', '--id', $Package, '--exact', '--source', 'winget',
-        '--accept-package-agreements', '--accept-source-agreements', '--disable-interactivity')
+    Write-Host "Installing $Package with WinGet..."
+    & winget.exe install --id $Package --exact --source winget --accept-package-agreements --accept-source-agreements --disable-interactivity
+    # WinGet uses this code when an installed package has no applicable update.
+    if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne -1978335189) {
+        throw "WinGet failed to install $Package (exit code $LASTEXITCODE)."
+    }
     Update-InstallPath
+}
+
+function Find-Npm {
+    $npm = Get-Command npm.cmd -CommandType Application -ErrorAction SilentlyContinue
+    if ($npm) {
+        return $npm.Path
+    }
+
+    $nodeDirectory = Join-Path $env:ProgramFiles 'nodejs'
+    $npmPath = Join-Path $nodeDirectory 'npm.cmd'
+    if (Test-Path -LiteralPath $npmPath -PathType Leaf) {
+        $env:Path = "$nodeDirectory;$env:Path"
+        return $npmPath
+    }
+}
+
+function Test-Python312 {
+    param([string]$Program, [string[]]$Arguments)
+
+    # An installed launcher may report a missing interpreter on stderr.
+    $ErrorActionPreference = 'Continue'
+    $version = & $Program @Arguments --version 2>$null
+    return $LASTEXITCODE -eq 0 -and $version -match '^Python 3\.12\.'
+}
+
+function Find-Python312 {
+    $launcher = Get-Command py.exe -CommandType Application -ErrorAction SilentlyContinue
+    if ($launcher -and (Test-Python312 $launcher.Path @('-3.12'))) {
+        return @{ Program = $launcher.Path; Arguments = @('-3.12') }
+    }
+
+    foreach ($registryRoot in 'HKCU:\Software', 'HKLM:\Software', 'HKLM:\Software\WOW6432Node') {
+        $registration = Get-Item -LiteralPath "$registryRoot\Python\PythonCore\3.12\InstallPath" -ErrorAction SilentlyContinue
+        if (-not $registration) {
+            continue
+        }
+        $executable = $registration.GetValue('ExecutablePath')
+        $installPath = $registration.GetValue('')
+        if (-not $executable -and $installPath) {
+            $executable = Join-Path $installPath 'python.exe'
+        }
+        if ($executable -and (Test-Path -LiteralPath $executable -PathType Leaf) -and
+            (Test-Python312 $executable)) {
+            return @{ Program = $executable; Arguments = @() }
+        }
+    }
 }
 
 function Install-PortableFFmpeg {
@@ -84,12 +134,21 @@ function Install-PortableFFmpeg {
 }
 
 Update-InstallPath
-if (-not (Get-Command npm.cmd -ErrorAction SilentlyContinue)) {
+$npm = Find-Npm
+if (-not $npm) {
     Install-Tool 'OpenJS.NodeJS.22'
+    $npm = Find-Npm
+    if (-not $npm) {
+        throw 'Node.js setup could not find npm.cmd. Repair the Node.js installation with npm enabled, then rerun Windows Install.cmd.'
+    }
 }
-cmd.exe /d /c 'py.exe -3.12 --version >NUL 2>&1'
-if ($LASTEXITCODE -ne 0) {
+$python = Find-Python312
+if (-not $python) {
     Install-Tool 'Python.Python.3.12'
+    $python = Find-Python312
+    if (-not $python) {
+        throw 'Python 3.12 setup could not locate the interpreter. Repair Python 3.12, then rerun Windows Install.cmd.'
+    }
 }
 if (-not (Get-Command ffmpeg.exe -ErrorAction SilentlyContinue) -or
     -not (Get-Command ffprobe.exe -ErrorAction SilentlyContinue)) {
@@ -104,13 +163,13 @@ if (-not (Get-Command ffmpeg.exe -ErrorAction SilentlyContinue) -or
 }
 
 Get-Command ffmpeg.exe, ffprobe.exe | Out-Null
-Invoke-Checked npm.cmd @('--prefix', 'remotion', 'ci')
-Invoke-Checked py.exe @('-3.12', '-m', 'pip', 'install', '-r', 'requirements-voice.txt')
+Invoke-Checked $npm @('--prefix', 'remotion', 'ci')
+Invoke-Checked $python.Program ($python.Arguments + @('-m', 'pip', 'install', '-r', 'requirements-voice.txt'))
 if (-not (Test-Path -LiteralPath 'projects/first-film')) {
-    Invoke-Checked py.exe @('-3.12', 'tools/create_project.py', '--format', 'video',
-        '--template', 'whiteboard', '--slug', 'first-film', '--duration', '10')
+    Invoke-Checked $python.Program ($python.Arguments + @('tools/create_project.py', '--format', 'video',
+        '--template', 'whiteboard', '--slug', 'first-film', '--duration', '10'))
 }
-Invoke-Checked npm.cmd @('--prefix', 'remotion', 'run', 'gen')
+Invoke-Checked $npm @('--prefix', 'remotion', 'run', 'gen')
 
 if (-not (Test-Path -LiteralPath '.env')) {
     Copy-Item -LiteralPath '.env.example' -Destination '.env'
