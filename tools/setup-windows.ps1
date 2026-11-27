@@ -29,6 +29,60 @@ function Install-Tool {
     Update-InstallPath
 }
 
+function Install-PortableFFmpeg {
+    $installDirectory = Join-Path $env:LOCALAPPDATA 'VideoStudio/ffmpeg'
+    $binDirectory = Join-Path $installDirectory 'bin'
+    $ffmpeg = Join-Path $binDirectory 'ffmpeg.exe'
+    $ffprobe = Join-Path $binDirectory 'ffprobe.exe'
+
+    if (-not (Test-Path -LiteralPath $ffmpeg -PathType Leaf) -or
+        -not (Test-Path -LiteralPath $ffprobe -PathType Leaf)) {
+        $stagingDirectory = Join-Path (Split-Path -Parent $installDirectory) "ffmpeg-$([guid]::NewGuid())"
+        [IO.Directory]::CreateDirectory($stagingDirectory) | Out-Null
+        try {
+            $ProgressPreference = 'SilentlyContinue'
+            $downloadUrl = 'https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip'
+            $archive = Join-Path $stagingDirectory 'ffmpeg.zip'
+            $checksum = Join-Path $stagingDirectory 'ffmpeg.sha256'
+            Invoke-WebRequest -UseBasicParsing -Uri $downloadUrl -OutFile $archive
+            Invoke-WebRequest -UseBasicParsing -Uri "$downloadUrl.sha256" -OutFile $checksum
+            $expectedHash = (Get-Content -LiteralPath $checksum -Raw).Trim()
+            if ((Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash -ne $expectedHash) {
+                throw 'The FFmpeg download failed its SHA-256 checksum check. Rerun Windows Install.cmd to retry.'
+            }
+
+            $extracted = Join-Path $stagingDirectory 'extracted'
+            Expand-Archive -LiteralPath $archive -DestinationPath $extracted
+            $release = Get-ChildItem -LiteralPath $extracted -Directory | Where-Object {
+                (Test-Path -LiteralPath (Join-Path $_.FullName 'bin/ffmpeg.exe') -PathType Leaf) -and
+                (Test-Path -LiteralPath (Join-Path $_.FullName 'bin/ffprobe.exe') -PathType Leaf)
+            } | Select-Object -First 1
+            if (-not $release) {
+                throw 'The FFmpeg archive did not contain ffmpeg.exe and ffprobe.exe.'
+            }
+
+            try {
+                [IO.Directory]::Move($release.FullName, $installDirectory)
+            } catch [IO.IOException] {
+                # A concurrent installer may already have published the complete directory.
+                if (-not (Test-Path -LiteralPath $ffmpeg -PathType Leaf) -or
+                    -not (Test-Path -LiteralPath $ffprobe -PathType Leaf)) {
+                    throw
+                }
+            }
+        } finally {
+            Remove-Item -LiteralPath $stagingDirectory -Recurse -Force
+        }
+    }
+
+    $userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+    if (($userPath -split ';') -notcontains $binDirectory) {
+        $updatedPath = (@($userPath, $binDirectory) | Where-Object { $_ }) -join ';'
+        [Environment]::SetEnvironmentVariable('Path', $updatedPath, 'User')
+    }
+    $env:Path = "$binDirectory;$env:Path"
+}
+
 Update-InstallPath
 if (-not (Get-Command npm.cmd -ErrorAction SilentlyContinue)) {
     Install-Tool 'OpenJS.NodeJS.22'
@@ -39,7 +93,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 if (-not (Get-Command ffmpeg.exe -ErrorAction SilentlyContinue) -or
     -not (Get-Command ffprobe.exe -ErrorAction SilentlyContinue)) {
-    Install-Tool 'Gyan.FFmpeg'
+    try {
+        Install-Tool 'Gyan.FFmpeg'
+        Get-Command ffmpeg.exe, ffprobe.exe | Out-Null
+    } catch {
+        Write-Warning "WinGet could not set up FFmpeg. $($_.Exception.Message)"
+        Write-Host 'Installing FFmpeg in your user profile from gyan.dev...'
+        Install-PortableFFmpeg
+    }
 }
 
 Get-Command ffmpeg.exe, ffprobe.exe | Out-Null
